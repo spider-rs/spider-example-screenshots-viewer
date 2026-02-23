@@ -24,7 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import AuthDropdown, { useAuthMenu, supabase } from "./auth";
+import AuthDropdown, { useAuthMenu } from "./auth";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:3031";
 
@@ -64,7 +64,7 @@ const SearchBar = ({ setDataValues }: { setDataValues: Dispatch<any> }) => {
   const [configModalOpen, setConfigModalOpen] = useState<boolean>(false);
   const [crawlLimit, setCrawlLimit] = useState<number>();
   const [returnFormat, setReturnFormat] = useState<string>(
-    loadDefaultReturnType(),
+    loadDefaultReturnType()
   );
   const [apiKey, setAPIKey] = useState<string>("");
   const [request, setRequest] = useState<string>(loadDefaultRequest());
@@ -126,11 +126,10 @@ const SearchBar = ({ setDataValues }: { setDataValues: Dispatch<any> }) => {
 
     toast({
       title: "Screenshotting",
-      description: `Screenshotting ${urlList.length} website${
+      description: `Taking screenshots of ${urlList.length} website${
         urlList.length === 1 ? "" : "s"
       } - ${urlList.join("\n")}.`,
     });
-
 
     try {
       const res = await fetch(API_URL + "/screenshot", {
@@ -249,7 +248,7 @@ const SearchBar = ({ setDataValues }: { setDataValues: Dispatch<any> }) => {
   const onLogoutEvent = async (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    await supabase.auth.signOut();
+    await auth.signOut();
     closeConfigModal();
   };
 
