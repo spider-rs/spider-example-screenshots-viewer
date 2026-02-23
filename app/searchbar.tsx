@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/select";
 import AuthDropdown, { useAuthMenu } from "./auth";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:3031";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.spider.cloud";
 
 enum StorageKeys {
   Limit = "@app/crawl_limit",
